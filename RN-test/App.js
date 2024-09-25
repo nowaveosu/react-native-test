@@ -9,7 +9,7 @@ export default function App() {
         <Text>한글</Text>
       </View>
       <Text>hi</Text>
-      <Text>hello 3worsd!</Text>
+      <Text style={{margin: 16, borderWidth: 1}}>hello 3worsd!</Text>
       <Button title='tap me!'/>
     </View>
   );
