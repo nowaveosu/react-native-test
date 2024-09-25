@@ -1,32 +1,23 @@
 
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 
-//html, css 없음. 유사한 요소들이 존재함
+//html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View style={styles.appContainer}>
       <View>
-        <Text style={styles.dummyText}>Another piece of text</Text>
+        <TextInput placeholder='Your course goal!'/>
+        <Button title="Add Goal" />
       </View>
-      <Text style={styles.dummyText}>
-        hello world!
-      </Text>
-      <Button title='tap me!'/>
+      <View>
+        <Text>List of goals...</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  dummyText: {
-    margin: 16,
-    padding: 16,
-    borderWidth: 2,
-    borderColor: 'red',
+  appContainer:{
+    padding: 70
   }
 });
