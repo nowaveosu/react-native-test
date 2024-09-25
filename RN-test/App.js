@@ -6,10 +6,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>한글</Text>
+        <Text style={styles.dummyText}>Another piece of text</Text>
       </View>
-      <Text>hi</Text>
-      <Text style={{margin: 16, borderWidth: 1 ,borderColor: 'red'}}>hello 3worsd!</Text>
+      <Text style={styles.dummyText}>
+        hello world!
+      </Text>
       <Button title='tap me!'/>
     </View>
   );
@@ -22,4 +23,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  dummyText: {
+    margin: 16,
+    padding: 16,
+    borderWidth: 2,
+    borderColor: 'red',
+  }
 });
