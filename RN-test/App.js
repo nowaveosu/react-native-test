@@ -1,14 +1,29 @@
-
+import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 
 //html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
 // flexbox가 기본값임, 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState('');
+
+
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText(enteredText);
+  };
+
+  function addGoalHandler() {
+    console.log(enteredGoalText);
+  };
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='Your course goal!'/>
-        <Button title="Add Goal" />
+        <TextInput
+          style={styles.textInput}
+          placeholder='Your course goal!' 
+          onChangeText={goalInputHandler}
+        />
+        <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
       <View style={styles.goalsContainer}>
         <Text>List of goals...</Text>
