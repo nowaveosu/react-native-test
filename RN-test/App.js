@@ -6,10 +6,13 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 
-//html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
+// html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
 // flexbox가 기본값임, css가 하위항목에게 상속되지 않음. 안드, ios간 css적용차이가 있음
+// ScrollView: 모든항목 렌더링(무거움), FlatList: 사용자가 내려야먄 추가 렌더링
+
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
@@ -21,7 +24,7 @@ export default function App() {
   function addGoalHandler() {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      enteredGoalText,
+      { text: enteredGoalText, key: Math.random().toString() },
     ]);
   }
 
@@ -36,13 +39,20 @@ export default function App() {
         <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceHorizontal={false}>
-          {courseGoals.map((goal) => (
-            <View key={goal} style={styles.goalItem}>
-              <Text style={styles.goalText}>{goal}</Text>
-            </View>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => {
+            itemData.index;
+            return (
+              <View style={styles.goalItem}>
+                <Text style={styles.goalText}>
+                  {itemData.item.text}
+                </Text>
+              </View>
+            );
+          }}
+          alwaysBounceHorizontal={false}
+        />
       </View>
     </View>
   );
