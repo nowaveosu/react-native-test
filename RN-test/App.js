@@ -5,6 +5,7 @@ import {
   View,
   Button,
   TextInput,
+  ScrollView,
 } from "react-native";
 
 //html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
@@ -35,11 +36,13 @@ export default function App() {
         <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
       <View style={styles.goalsContainer}>
-        {courseGoals.map((goal) => (
-          <View key={goal} style={styles.goalItem}>
-            <Text style={styles.goalText}>{goal}</Text>
-          </View>
-        ))}
+        <ScrollView>
+          {courseGoals.map((goal) => (
+            <View key={goal} style={styles.goalItem}>
+              <Text style={styles.goalText}>{goal}</Text>
+            </View>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
