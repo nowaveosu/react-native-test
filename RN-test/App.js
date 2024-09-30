@@ -13,9 +13,14 @@ import GoalInput from "./components/GoalInput";
 // html, css 없음. 유사한 요소들이 존재함, 코어컴포넌트를 직접import해야함
 // flexbox가 기본값임, css가 하위항목에게 상속되지 않음. 안드, ios간 css적용차이가 있음
 // ScrollView: 모든항목 렌더링(무거움), FlatList: 사용자가 내려야먄 추가 렌더링
-
+// Button 디테일한 커스텀은 Pressable로
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
+
+  function startAddGoalHandler() {
+    setModalIsVisible(true);
+  }
 
   function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => [
@@ -32,7 +37,15 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button
+        title="Add New Goal"
+        color="#5e0acc"
+        onPress={startAddGoalHandler}
+      />
+      <GoalInput
+        visible={modalIsVisible}
+        onAddGoal={addGoalHandler}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
