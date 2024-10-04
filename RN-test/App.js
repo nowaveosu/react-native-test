@@ -15,6 +15,9 @@ import GoalInput from "./components/GoalInput";
 // flexbox가 기본값임, css가 하위항목에게 상속되지 않음. 안드, ios간 css적용차이가 있음
 // ScrollView: 모든항목 렌더링(무거움), FlatList: 사용자가 내려야먄 추가 렌더링
 // Button 디테일한 커스텀은 Pressable로
+// app.json에서 모든 background색상을 정해줄수있음
+// expo에서 제공하는 Statusbar 등 좋은라이브러리가 많음
+
 export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
